@@ -1,6 +1,6 @@
 # PlanToSim - Complete Flight Plan Transfer Solution
 
-Transfer flight plans from your electronic flight bag (EFB) directly into your favorite flight simulators, including X-Plane, Reality XP, and more. This complete solution includes both the **PlanToSim iOS app** and the **PlanToSim X-Plane plugin** to seamlessly move your flight plans from planning to simulation.
+Transfer flight plans from popular Electronic Flight Bag (EFB) apps directly into X-Plane flight simulator GPS/FMS units. This complete solution includes both the **PlanToSim iOS app** and the **PlanToSim X-Plane plugin** to seamlessly move your flight plans from planning to simulation for Reality-XP GTN/GNS navigators, TDS GTN Xi navigators, and X-Plane FMS systems.
 
 ## System Overview
 
@@ -17,8 +17,8 @@ A comprehensive flight planning app that supports worldwide navigation data and 
 
 #### Features:
 - **Global Navigation Data** - Uses pre-processed FAA CIFP, NASR and OurAirports data
-- **PDF Import** - Extract flight plans from PDF documents using OCR
-- **ForeFlight Import** - Direct import of ForeFlight .fpl files
+- **EFB Integration** - Import from ForeFlight, Garmin Pilot, and FlyQ
+- **Basic Route Processing** - Handles airports, fixes, and airways (no SIDs/STARs/runways)
 - **Multiple Export Formats** - Supports GTN (.gfp), GNS (.fpl XML), X-Plane FMS (.fms), and TDS (.gfp)
 - **Configurable Destinations** - Toggle between GTN, GNS, X-Plane FMS, and TDS output formats
 - **Network Transfer** - Send flight plans directly to X-Plane plugin via TCP
@@ -58,7 +58,7 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
 
 3. **Configure the plugin**:
    - Start X-Plane
-   - Go to **Plugins > GFP Receiver** (this will be renamed to PlanToSim in future versions)
+   - Go to **Plugins > PlanToSim**
    - Set folder paths for each GPS/FMS type:
      - **GTN Folder**: Usually `C:\ProgramData\Garmin\Trainers\Databases\FPLN`
      - **GNS Folder**: Usually `C:\ProgramData\Garmin\GNS Trainer Data\GNS\FPL`  
@@ -78,8 +78,7 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
 ### Creating and Sending Flight Plans
 
 1. **Import flight plan** in the PlanToSim iOS app:
-   - **From PDF**: Open/share a PDF flight plan document - the app will use OCR to extract the route
-   - **From ForeFlight**: Open/share a ForeFlight .fpl file directly 
+   - Import from **ForeFlight**, **Garmin Pilot**, or **FlyQ**
    - The app will automatically process and display the extracted route
 
 2. **Configure output destinations**:
@@ -123,20 +122,22 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
 
 ## Navigation Data Sources
 
-PlanToSim uses pre-processed navigation data from multiple sources:
+PlanToSim uses pre-processed navigation data from public sources and OurAirports.
 
-1. **FAA CIFP** (Current terminal procedures and airways)
-2. **FAA NASR** (U.S. airports, fixes, navaids)  
-3. **OurAirports** (Global airports, navaids, waypoints)
-
-The data is processed and merged during app compilation, with priority given to the most authoritative source for each region.
+**Important:** This data is for simulation purposes only - do not use for navigation and may not be complete.
 
 ## Supported Import Sources
 
 PlanToSim can import flight plans from:
 
-- **PDF Documents** - Any PDF flight plan using OCR text extraction
-- **ForeFlight .fpl files** - Direct import of ForeFlight flight plan files
+- **ForeFlight**
+- **Garmin Pilot** 
+- **FlyQ**
+
+**Current Processing Limitations:**
+- Processes airports, fixes, and airways only
+- Does not process runways, SIDs, or STARs
+- Routes are converted to basic point-to-point with airway expansion
 
 ## Troubleshooting
 
