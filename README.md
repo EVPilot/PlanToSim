@@ -122,7 +122,7 @@ In the PlanToSim app settings, toggle which flight plan formats you want to expo
 
 **After flight plans are sent to the appropriate folders, you must use your navigator's instructions to import the flight plans:**
 
-#### For GNS Navigators (Reality-XP GNS 430/530)
+#### For GNS Navigators (Reality-XP and X-Plane GNS 430/530)
 1. Press **FPL** button
 2. Use the **small knob** to scroll right to the import page
 3. The import page will display available flight plans
@@ -136,6 +136,8 @@ In the PlanToSim app settings, toggle which flight plan formats you want to expo
     - Press **center button** to unhighlight/deselect
     - Press **FPL** again to exit
     - Press **CLR** or **press and hold CLR** depending on your preference
+
+**Note:** These procedures work identically for both Reality-XP GNS trainers and X-Plane's built-in GNS units.
 
 #### For GTN Navigators (Reality-XP GTN 650/750)
 1. Select **HOME**
@@ -164,26 +166,32 @@ In the PlanToSim app settings, toggle which flight plan formats you want to expo
 #### Reality-XP GTN Series
 - GTN 650/750 touchscreen units
 - Flight plans saved as `.gfp` files
-- Supports full route with airways and procedures
+- **Supports full airway routing** - receives complete route with airways intact
 
 #### TDS GTN Series
 - TDS GTN 650Xi/750Xi navigators
 - Flight plans saved as `.gfp` files
-- Compatible with TDS GPS systems
+- **Supports full airway routing** - receives complete route with airways intact
 
-#### Reality-XP GNS Series  
+#### GNS Series (Reality-XP and X-Plane)
 - GNS 430/530 units
 - Flight plans saved as `.fpl` XML files
-- Compatible with Reality-XP GNS trainers
+- Compatible with Reality-XP GNS trainers and X-Plane built-in GNS units
+- Both versions use identical import procedures
+- **Point-to-point routing only** - airways are expanded to individual waypoints
 
 #### X-Plane Flight Management Systems
 - Native X-Plane FMS
 - Saved as `.fms` files in X-Plane format
 - Works with default X-Plane aircraft and most third-party aircraft
+- **Point-to-point routing only** - airways are expanded to individual waypoints
 
 ## Navigation Data Sources
 
-PlanToSim uses pre-processed navigation data from public sources and OurAirports.
+PlanToSim uses pre-processed navigation data from multiple sources:
+
+- **United States**: Mostly free FAA data sources (CIFP, NASR)
+- **Rest of World**: OurAirports database
 
 **Important:** This data is for simulation purposes only - do not use for navigation and may not be complete.
 
@@ -195,10 +203,12 @@ PlanToSim can import flight plans from:
 - **Garmin Pilot** 
 - **FlyQ**
 
-**Current Processing Limitations:**
-- Processes airports, fixes, and airways only
+**Current Processing Capabilities:**
+- Processes airports, fixes, and airways
 - Does not process runways, SIDs, or STARs
-- Routes are converted to basic point-to-point with airway expansion
+- **GTN navigators**: Support full airway routing
+- **GNS and X-Plane FMS**: Routes are converted to point-to-point waypoints only
+- **Database compatibility**: If your navigator's database is out of date, some fixes may not match and you may need to manually edit or remove fixes
 
 ## Troubleshooting
 
@@ -221,9 +231,11 @@ PlanToSim can import flight plans from:
 - Ensure your GPS/FMS software is looking in the correct folder for flight plans
 - Some aircraft may use custom paths - check aircraft documentation
 
-**Missing waypoints**:
-- The app uses the most current navigation data available
-- Some very recent changes may not be reflected immediately
+**Missing or unrecognized waypoints**:
+- The app uses current navigation data, but your GPS/FMS may have an older database
+- If your navigator's database is out of date, some fixes may not be recognized
+- **Solution**: Manually edit the flight plan in your navigator to remove or replace unrecognized waypoints
+- Some very recent navigation data changes may not be reflected immediately
 - Custom or local waypoints may not be available
 
 ## Advanced Configuration
