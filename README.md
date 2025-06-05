@@ -83,24 +83,24 @@ Choose your Electronic Flight Bag (EFB) and follow the specific instructions:
 
 #### ForeFlight
 1. Open your flight plan in ForeFlight
-2. At the bottom of the flight plan window, tap the **share icon** <img src="./share-ios.svg" width="16" height="16" style="display: inline; background-color: white; padding: 2px; border-radius: 3px; border: 1px solid #ccc;">
+2. At the bottom of the flight plan window, tap the **share icon** <img src="./23E81A92-9650-42D5-BE7F-8A68F88F9983_4_5005_c.jpeg" width="16" height="16" style="display: inline;">
 3. Select **"SHARE FPL FILE"**
 4. Choose **"PlanToSim"** from the app list
 5. After the plan is sent, you may return to ForeFlight
 
 #### Garmin Pilot
 1. Open your flight plan in Garmin Pilot
-2. In the flight planning screen, tap the **share icon** <img src="./share-ios.svg" width="16" height="16" style="display: inline; background-color: white; padding: 2px; border-radius: 3px; border: 1px solid #ccc;"> at the bottom left
+2. In the flight planning screen, tap the **share icon** <img src="./23E81A92-9650-42D5-BE7F-8A68F88F9983_4_5005_c.jpeg" width="16" height="16" style="display: inline;"> at the bottom left
 3. Select **"Print Navlog"**
-4. Tap the **share icon** <img src="./share-ios.svg" width="16" height="16" style="display: inline; background-color: white; padding: 2px; border-radius: 3px; border: 1px solid #ccc;"> at the top right
+4. Tap the **share icon** <img src="./23E81A92-9650-42D5-BE7F-8A68F88F9983_4_5005_c.jpeg" width="16" height="16" style="display: inline;"> at the top right
 5. Choose **"PlanToSim"** from the app list
 6. After the plan is sent, you may return to Garmin Pilot
 
 #### FlyQ+ EFB
 1. Open your flight plan in FlyQ+ EFB
-2. In the Plans section, tap the **share icon** <img src="./share-ios.svg" width="16" height="16" style="display: inline; background-color: white; padding: 2px; border-radius: 3px; border: 1px solid #ccc;"> at the top right
+2. In the Plans section, tap the **share icon** <img src="./23E81A92-9650-42D5-BE7F-8A68F88F9983_4_5005_c.jpeg" width="16" height="16" style="display: inline;"> at the top right
 3. Select **"PRINT"**
-4. Tap the **share icon** <img src="./share-ios.svg" width="16" height="16" style="display: inline; background-color: white; padding: 2px; border-radius: 3px; border: 1px solid #ccc;"> at the top
+4. Tap the **share icon** <img src="./23E81A92-9650-42D5-BE7F-8A68F88F9983_4_5005_c.jpeg" width="16" height="16" style="display: inline;"> at the top
 5. Choose **"PlanToSim"** from the app list
 6. After the plan is sent, you may return to FlyQ+ EFB
 
