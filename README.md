@@ -49,7 +49,7 @@ A Windows system tray application that receives flight plans from the PlanToSim 
 #### Features:
 - **System Tray App** - Runs quietly in the background on Windows
 - **TCP Server** - Listens on port 5000 for incoming flight plans
-- **Multiple Destinations** - Supports TDS GTNXi, MSFS 2020/2024, GNS, and X-Plane
+- **Multiple Destinations** - Supports TDS GTNXi, MSFS 2020, and MSFS 2024
 - **Enhanced Protocol** - Full waypoint manifest support for user waypoints
 - **Toast Notifications** - Visual feedback when flight plans are received
 - **Configurable Paths** - Set custom output folders per destination
