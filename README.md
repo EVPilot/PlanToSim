@@ -1,12 +1,13 @@
 # PlanToSim - Complete Flight Plan Transfer Solution
 
-Transfer flight plans from popular Electronic Flight Bag (EFB) apps directly into X-Plane flight simulator GPS/FMS units. This complete solution includes both the **PlanToSim iOS app** and the **PlanToSim X-Plane plugin** to seamlessly move your flight plans from planning to simulation for Reality-XP GTN/GNS navigators, TDS GTN Xi navigators, and X-Plane FMS systems.
+Transfer flight plans from popular Electronic Flight Bag (EFB) apps directly into X-Plane and Microsoft Flight Simulator GPS/FMS units. This complete solution includes the **PlanToSim iOS app**, the **PlanToSim X-Plane plugin**, and the **PlanToSim MSFS Bridge** to seamlessly move your flight plans from planning to simulation.
 
 ## System Overview
 
 **PlanToSim** consists of two components that work together:
 
 1. **PlanToSim (iOS App)** - Create, convert, and export flight plans from your iPhone/iPad
+3. **PlanToSim (MSFS Bridge)** - Receive flight plans on Windows for TDS GTNXi in MSFS
 2. **PlanToSim (X-Plane Plugin)** - Receive flight plans and install them in your simulator
 
 ## Components
@@ -41,6 +42,23 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
 - **Automatic Directory Creation** - Creates necessary directories if they don't exist
 - **Persistent Settings** - Configuration saved across X-Plane sessions
 
+### PlanToSim (MSFS Bridge)
+
+A Windows system tray application that receives flight plans from the PlanToSim iOS app for use with TDS GTNXi in Microsoft Flight Simulator.
+
+#### Features:
+- **System Tray App** - Runs quietly in the background on Windows
+- **TCP Server** - Listens on port 5000 for incoming flight plans
+- **Multiple Destinations** - Supports TDS GTNXi, MSFS 2020/2024, GNS, and X-Plane
+- **Enhanced Protocol** - Full waypoint manifest support for user waypoints
+- **Toast Notifications** - Visual feedback when flight plans are received
+- **Configurable Paths** - Set custom output folders per destination
+
+#### Requirements:
+- Windows 10/11
+- .NET 8.0 Runtime (included in portable build)
+- TDS GTNXi installed in MSFS (for TDS destination)
+
 ## Installation Guide
 
 ### Step 1: Install PlanToSim Plugin (X-Plane)
@@ -67,6 +85,27 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
    - **Only change these paths if you've installed your GPS/FMS software in a different location**
    - Use the plugin dropdown menu and file selector to set custom folder paths if needed
 
+
+
+### Step 1b: Install PlanToSim MSFS Bridge (for MSFS users)
+
+1. **Download the bridge**:
+   - Download the latest `PlanToSimBridge-X.X.X-Portable.zip` from the [Releases](../../releases) page
+   - Extract the ZIP file to a folder of your choice (e.g., `C:\PlanToSimBridge\`)
+
+2. **Run the bridge**:
+   - Double-click `PlanToSimBridge.exe`
+   - The app will appear in your system tray (near the clock)
+   - Right-click the tray icon to access settings
+
+3. **Configure the bridge** (optional):
+   - Default TDS path: `C:\ProgramData\TDS\GTNXi\FPL\`
+   - Right-click tray icon -> Settings to change paths
+   - Enable "Start with Windows" for automatic startup
+
+4. **Firewall configuration**:
+   - Allow `PlanToSimBridge.exe` through Windows Firewall on port 5000
+   - Both devices must be on the same network
 ### Step 2: Install PlanToSim (iOS)
 
 1. **Download from App Store**: [Link coming soon]
@@ -275,6 +314,12 @@ If you're using non-standard installations:
 - **Firewall**: Ensure port 5000 is open for incoming connections
 
 ## Downloads
+
+### PlanToSim MSFS Bridge (Windows)
+For Microsoft Flight Simulator users with TDS GTNXi:
+- Download `PlanToSimBridge-X.X.X-Portable.zip` from the [Releases](../../releases) page
+- Extract to any folder and run `PlanToSimBridge.exe`
+- The app runs in the system tray
 
 ### PlanToSim Plugin (X-Plane)
 Download the latest version from the [Releases](../../releases) page.
