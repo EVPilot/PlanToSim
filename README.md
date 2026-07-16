@@ -4,11 +4,13 @@ Transfer flight plans from popular Electronic Flight Bag (EFB) apps directly int
 
 ## System Overview
 
-**PlanToSim** consists of two components that work together:
+**PlanToSim** consists of an iOS app plus a free receiver that runs on your flight-sim PC:
 
-1. **PlanToSim (iOS App)** - Create, convert, and export flight plans from your iPhone/iPad
-3. **PlanToSim (MSFS Bridge)** - Receive flight plans on Windows for TDS GTNXi in MSFS
-2. **PlanToSim (X-Plane Plugin)** - Receive flight plans and install them in your simulator
+1. **PlanToSim (iOS App)** - Convert and send flight plans from your iPhone/iPad
+2. **PlanToSim (X-Plane Plugin)** - Receiver for X-Plane setups: Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS, and FlyThisSim/SimAVIO
+3. **PlanToSim (MSFS Bridge)** - Receiver for Microsoft Flight Simulator setups: MSFS 2020, MSFS 2024, and TDS GTN Xi
+
+**Which receiver do I need?** If you fly X-Plane, install the **plugin**. If you fly MSFS, install the **bridge**. Both are free downloads from this repository's [Releases](../../releases) page.
 
 ## Components
 
@@ -17,19 +19,22 @@ Transfer flight plans from popular Electronic Flight Bag (EFB) apps directly int
 A comprehensive flight planning app that supports worldwide navigation data and multiple export formats.
 
 #### Features:
-- **Global Navigation Data** - Uses pre-processed FAA CIFP, NASR and OurAirports data
+- **Global Navigation Data** - Uses pre-processed FAA CIFP, NASR and OurAirports data, updated every AIRAC cycle via in-app Check for Updates
 - **EFB Integration** - Import from ForeFlight, Garmin Pilot, and FlyQ
-- **Basic Route Processing** - Handles airports, fixes, and airways (no SIDs/STARs/runways)
-- **Multiple Export Formats** - Supports GTN (.gfp), GNS (.fpl XML), X-Plane FMS (.fms), and TDS (.gfp)
-- **Configurable Destinations** - Toggle between GTN, GNS, X-Plane FMS, and TDS output formats
-- **Network Transfer** - Send flight plans directly to X-Plane plugin via TCP
+- **Full Procedure Support** - Handles airports, fixes, airways, SIDs, STARs, approaches, and runways
+- **Multiple Export Formats** - GTN (.gfp), GNS (.fpl XML), TDS (.gfp), X-Plane FMS (.fms), MSFS (.pln), and FlyThisSim slot XML
+- **Configurable Destinations** - Toggle each output format independently
+- **Network Transfer** - Send flight plans directly to the PlanToSim plugin or bridge via TCP
 - **Airway Expansion** - Full airway support with automatic route expansion
+- **Clear Send Feedback** - Delivery confirmations from the receiver, and a clear "not sent — check connection" message when the PC can't be reached
 
 #### Supported Export Formats:
 - **GTN (.gfp)** - For Reality-XP GTN navigators  
 - **GNS (.fpl XML)** - For Reality-XP GNS navigators
-- **TDS (.gfp)** - For TDS GTN Xi navigators
+- **TDS (.gfp)** - For TDS GTN Xi navigators (native procedures)
 - **X-Plane FMS (.fms)** - For X-Plane flight management systems
+- **MSFS (.pln)** - Native flight plans for Microsoft Flight Simulator 2020 and 2024
+- **FlyThisSim slot XML** - For FTS TouchTrainer / SimAVIO (GNS 530/430)
 
 ### PlanToSim (X-Plane Plugin)
 
@@ -37,7 +42,7 @@ A plugin for X-Plane 11/12 that receives flight plans from the PlanToSim iOS app
 
 #### Features:
 - **TCP Server** - Listens on port 5000 for incoming flight plans from iOS app
-- **Four Format Support** - Saves to GTN, GNS, TDS, and X-Plane FMS folders  
+- **Five Format Support** - Saves to GTN, GNS, TDS, and X-Plane FMS folders, and delivers FlyThisSim/SimAVIO plans directly into a flight-plan slot
 - **Configurable Paths** - Set custom folder paths for each GPS/FMS type
 - **Automatic Directory Creation** - Creates necessary directories if they don't exist
 - **Persistent Settings** - Configuration saved across X-Plane sessions
@@ -111,7 +116,7 @@ A Windows system tray application that receives flight plans from the PlanToSim 
 1. **Download from App Store**: [Link coming soon]
 2. **Configure network settings**:
    - Open the app settings
-   - Enter your X-Plane computer's IP address
+   - Enter your simulator PC's IP address
    - The default port (5000) should work in most cases
 
 ## Usage Instructions
@@ -150,12 +155,15 @@ In the PlanToSim app settings, toggle which flight plan formats you want to expo
 - **GNS** - Reality-XP GNS navigators (.fpl XML files)  
 - **TDS** - TDS GTN Xi navigators (.gfp files)
 - **X-Plane FMS** - X-Plane flight management systems (.fms files)
+- **MSFS** - Microsoft Flight Simulator native .pln files (pick your edition, 2020 or 2024)
+- **FTS** - FlyThisSim TouchTrainer / SimAVIO flight-plan slots
 
-### Step 3: Export to X-Plane
+### Step 3: Export to Your Simulator PC
 
 - The app automatically processes and sends the flight plan
-- Flight plans are sent to your X-Plane computer via TCP (port 5000)
-- You'll see progress indicators for importing, converting, and exporting
+- Flight plans are sent to your PC via TCP (port 5000) — the X-Plane plugin or the MSFS bridge receives them and puts each file where its navigator loads it
+- You'll see progress indicators for importing, converting, and exporting, plus a delivery confirmation from the receiver
+- If the PC can't be reached, the app tells you within seconds ("Flight Plan Not Sent") so you can check the connection and retry
 
 ### Step 4: Import Flight Plan in GPS Navigator
 
@@ -200,6 +208,19 @@ In the PlanToSim app settings, toggle which flight plan formats you want to expo
 3. Load the flight plan from the FMS plans directory
 4. Follow your specific aircraft's FMS procedures for activation
 
+**Note:** X-Plane restores departure/arrival procedures from a loaded plan only when the app's navigation-data cycle matches the simulator's — keep both on the current AIRAC (in the app: Settings → Navigation Data → Check for Updates).
+
+#### For Microsoft Flight Simulator (2020 and 2024)
+1. The bridge places the .pln file where your edition loads flight plans
+2. **MSFS 2020**: open the **World Map** and load the plan (or it appears as the current plan)
+3. **MSFS 2024**: open the **EFB / flight planning** screen and load the plan — departures, arrivals, and approaches are attached automatically
+4. Resending a plan with the same name overwrites the previous file
+
+#### For FlyThisSim TouchTrainer / SimAVIO
+1. The plugin saves the plan into the lowest empty flight-plan slot (or a slot you pin in the app's settings) and the app confirms "plan saved to slot N"
+2. SimAVIO reads its flight-plan store when its panel opens — **start X-Plane, send the plan, then open SimAVIO** (or close and reopen its panel)
+3. Load the slot in the TouchTrainer GNS as usual
+
 ### Supported Aircraft and GPS Units
 
 #### Reality-XP GTN Series
@@ -243,18 +264,18 @@ PlanToSim can import flight plans from:
 - **FlyQ**
 
 **Current Processing Capabilities:**
-- Processes airports, fixes, and airways
-- Does not process runways, SIDs, or STARs
-- **GTN navigators**: Support full airway routing
-- **GNS and X-Plane FMS**: Routes are converted to point-to-point waypoints only
+- Processes airports, fixes, airways, SIDs, STARs, approaches, and runways
+- **TDS GTN Xi and MSFS**: Procedures transfer natively (the navigator/simulator expands them)
+- **Reality-XP GTN/GNS, FlyThisSim, X-Plane FMS**: Procedures and airways are expanded to individual waypoints where the format requires it
 - **Database compatibility**: If your navigator's database is out of date, some fixes may not match and you may need to manually edit or remove fixes
 
 ## Troubleshooting
 
 ### Connection Issues
 
-**Flight plans not transferring**:
-- Verify your X-Plane computer's IP address in the iOS app
+**Flight plans not transferring** (the app shows "Flight Plan Not Sent"):
+- Verify your simulator PC's IP address in the iOS app settings
+- Make sure the receiver is running — the PlanToSim plugin (X-Plane must be running) or the MSFS bridge (tray icon visible)
 - Check that port 5000 isn't blocked by your firewall
 - Ensure both devices are on the same network
 
@@ -290,6 +311,8 @@ Both the iOS app and X-Plane plugin allow you to control which flight plan forma
   - **GNS** - Reality-XP GNS navigators  
   - **TDS** - TDS GTN Xi navigators
   - **X-Plane FMS** - X-Plane flight management systems
+  - **MSFS** - Microsoft Flight Simulator (with a 2020/2024 edition picker)
+  - **FTS** - FlyThisSim TouchTrainer / SimAVIO (with an optional pinned slot)
 
 **In the X-Plane Plugin:**
 - No toggles needed - the plugin receives and saves all formats sent by the app
@@ -315,14 +338,20 @@ If you're using non-standard installations:
 
 ## Downloads
 
-### PlanToSim MSFS Bridge (Windows)
-For Microsoft Flight Simulator users with TDS GTNXi:
-- Download `PlanToSimBridge-X.X.X-Portable.zip` from the [Releases](../../releases) page
+All PC components are free and live on this repository's [Releases](../../releases) page.
+
+### PlanToSim MSFS Bridge (Windows) — for MSFS users
+Receives plans for **MSFS 2020, MSFS 2024, and TDS GTN Xi**:
+- Download the latest `PlanToSimBridge-*-Portable.zip` from the [Releases](../../releases) page (release `bridge-v1.0.0` or newer)
 - Extract to any folder and run `PlanToSimBridge.exe`
 - The app runs in the system tray
 
-### PlanToSim Plugin (X-Plane)
-Download the latest version from the [Releases](../../releases) page.
+### PlanToSim Plugin (X-Plane) — for X-Plane users
+Receives plans for **Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS, and FlyThisSim/SimAVIO**:
+- Download the latest plugin ZIP from the [Releases](../../releases) page (release `v1.0.6` or newer)
+
+### Navigation Data
+Published here every AIRAC cycle as `navdata-v{cycle}` releases — the iOS app downloads updates itself via **Settings → Navigation Data → Check for Updates**; no manual download needed.
 
 ### PlanToSim (iOS App)
 [App Store link will be added here]
@@ -332,12 +361,17 @@ Download the latest version from the [Releases](../../releases) page.
 ### X-Plane Plugin (PlanToSim)
 - **X-Plane**: Version 11 or 12 (Windows only)
 - **Operating System**: Windows (64-bit) - **Windows only**
-- **Supported GPS**: Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS
+- **Supported GPS**: Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS, FlyThisSim TouchTrainer/SimAVIO
+
+### MSFS Bridge (PlanToSimBridge)
+- **Simulator**: Microsoft Flight Simulator 2020 and/or 2024
+- **Operating System**: Windows 10/11 (64-bit)
+- **Supported destinations**: MSFS 2020, MSFS 2024, TDS GTN Xi
 
 ### iOS App (PlanToSim)  
-- **iOS**: Version 13.0 or later
+- **iOS**: Version 17.6 or later
 - **Device**: iPhone or iPad
-- **Network**: WiFi connection to same network as X-Plane computer
+- **Network**: WiFi connection to same network as the simulator PC
 
 ## Support and Documentation
 

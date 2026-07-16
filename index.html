@@ -147,7 +147,7 @@
     <div class="container">
         <div class="card">
             <h2>Welcome</h2>
-            <p>PlanToSim seamlessly converts Electronic Flight Bag (EFB) flight plans to formats compatible with popular flight simulation GPS navigators and X-Plane FMS.</p>
+            <p>PlanToSim seamlessly converts Electronic Flight Bag (EFB) flight plans to formats compatible with Microsoft Flight Simulator, X-Plane, and popular flight simulation GPS navigators.</p>
 
             <div class="feature-grid">
                 <div class="feature-box">
@@ -156,7 +156,7 @@
                 </div>
                 <div class="feature-box">
                     <h4>🎮 Export</h4>
-                    <p>TDS GTN, Reality-XP GTN/GNS, X-Plane FMS</p>
+                    <p>MSFS 2020/2024, X-Plane FMS, TDS GTN Xi, Reality-XP GTN/GNS, FlyThisSim</p>
                 </div>
                 <div class="feature-box">
                     <h4>🔒 Private</h4>
@@ -170,19 +170,34 @@
         </div>
 
         <div class="card">
+            <h2>Get the Free PC Receiver</h2>
+            <p>PlanToSim sends plans over your local network to a small free receiver on your flight-sim PC. Install the one that matches your simulator:</p>
+            <ul>
+                <li><strong>Flying X-Plane?</strong> Install the <strong>PlanToSim X-Plane Plugin</strong> — receives plans for Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS, and FlyThisSim/SimAVIO.</li>
+                <li><strong>Flying Microsoft Flight Simulator?</strong> Install the <strong>PlanToSim MSFS Bridge</strong> — receives plans for MSFS 2020, MSFS 2024, and TDS GTN Xi.</li>
+            </ul>
+            <p style="text-align: center;">
+                <a class="cta-button" href="https://github.com/EVPilot/PlanToSim/releases" target="_blank">Download Plugin &amp; Bridge (GitHub Releases)</a>
+            </p>
+            <p>Install instructions for both are on the <a href="https://github.com/EVPilot/PlanToSim#installation-guide" target="_blank">PlanToSim GitHub page</a>.</p>
+        </div>
+
+        <div class="card">
             <h2>How to Use PlanToSim</h2>
 
             <h3>Step 1: Configure Settings</h3>
             <ol>
                 <li>Open PlanToSim</li>
                 <li>Tap the <strong>Settings</strong> icon (gear) in the top left</li>
-                <li>Enter your <strong>X-Plane IP Address</strong> (e.g., 192.168.1.100)</li>
+                <li>Enter your <strong>PC's IP Address</strong> (e.g., 192.168.1.100) — the computer running the PlanToSim plugin or bridge</li>
                 <li>Toggle on the navigator formats you want to export:
                     <ul>
                         <li><strong>Reality-XP GTN</strong> - For Reality-XP GTN 750/650</li>
-                        <li><strong>TDS GTN</strong> - For TDS GTN Xi hardware</li>
+                        <li><strong>TDS GTN</strong> - For TDS GTN Xi</li>
                         <li><strong>Reality-XP GNS</strong> - For Reality-XP GNS 530/430</li>
                         <li><strong>X-Plane FMS</strong> - For X-Plane native FMS</li>
+                        <li><strong>MSFS</strong> - For Microsoft Flight Simulator (pick your edition: 2020 or 2024)</li>
+                        <li><strong>FTS</strong> - For FlyThisSim TouchTrainer / SimAVIO</li>
                     </ul>
                 </li>
                 <li>Choose approach conversion preferences</li>
@@ -209,12 +224,12 @@
             <ul>
                 <li>Process your flight plan using OCR (for PDFs) or direct parsing (for .fpl files)</li>
                 <li>Convert to your selected navigator formats</li>
-                <li>Transfer files to X-Plane on your local network</li>
-                <li>Show "Flight Plan Converted!" when complete</li>
+                <li>Transfer files to the PlanToSim plugin or bridge on your PC</li>
+                <li>Show "Flight Plan Converted!" when complete — or "Flight Plan Not Sent" within seconds if your PC can't be reached, so you can check the connection and retry</li>
             </ul>
 
             <h3>Step 4: Fly!</h3>
-            <p>Your flight plan is now ready in your simulator's GPS navigator or X-Plane FMS.</p>
+            <p>Your flight plan is now ready in your simulator. MSFS plans appear in the World Map (2020) or EFB flight planning screen (2024) with departures, arrivals, and approaches attached. For FlyThisSim, send the plan before opening the SimAVIO panel — it reads its flight-plan slots when the panel opens.</p>
         </div>
 
         <div class="card">
@@ -234,20 +249,23 @@
                 <div class="faq-question">Q: Which GPS navigator formats can I export?</div>
                 <p><strong>A:</strong> PlanToSim supports:</p>
                 <ul>
+                    <li><strong>Microsoft Flight Simulator 2020 &amp; 2024</strong> - Native flight plans (.pln)</li>
                     <li><strong>TDS GTN Xi</strong> - Native procedure format (.gfp)</li>
                     <li><strong>Reality-XP GTN 750/650</strong> - Fix-to-fix expansion (.gfp)</li>
                     <li><strong>Reality-XP GNS 530/430</strong> - XML format (.fpl)</li>
                     <li><strong>X-Plane FMS</strong> - Native FMS format (.fms)</li>
+                    <li><strong>FlyThisSim TouchTrainer / SimAVIO</strong> - Direct delivery into a flight-plan slot</li>
                 </ul>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">Q: How do I connect to X-Plane?</div>
+                <div class="faq-question">Q: How do I connect to my simulator?</div>
                 <p><strong>A:</strong></p>
                 <ol>
-                    <li>Ensure X-Plane is running on your computer</li>
-                    <li>Ensure your iPad/iPhone and X-Plane computer are on the <strong>same Wi-Fi network</strong></li>
-                    <li>Find your X-Plane computer's IP address:
+                    <li>Install the free receiver on your simulator PC: the <strong>PlanToSim plugin</strong> for X-Plane or the <strong>PlanToSim bridge</strong> for MSFS (<a href="https://github.com/EVPilot/PlanToSim/releases" target="_blank">downloads</a>)</li>
+                    <li>Ensure the receiver is running (X-Plane started, or the bridge tray icon visible)</li>
+                    <li>Ensure your iPad/iPhone and the PC are on the <strong>same Wi-Fi network</strong></li>
+                    <li>Find your PC's IP address:
                         <ul>
                             <li><strong>Mac:</strong> System Preferences → Network</li>
                             <li><strong>Windows:</strong> Command Prompt → <code>ipconfig</code></li>
@@ -262,14 +280,15 @@
                 <div class="faq-question">Q: What navigation data does PlanToSim use?</div>
                 <p><strong>A:</strong> PlanToSim includes a comprehensive navigation database:</p>
                 <ul>
-                    <li>72,127+ navigation fixes (waypoints)</li>
-                    <li>47,382+ airports with ICAO identifiers</li>
-                    <li>1,203 airways (high and low altitude)</li>
-                    <li>460 SIDs (Standard Instrument Departures)</li>
-                    <li>279 STARs (Standard Terminal Arrival Routes)</li>
-                    <li>1,129 instrument approaches</li>
+                    <li>77,000+ navigation fixes (waypoints)</li>
+                    <li>55,000+ airports with ICAO identifiers</li>
+                    <li>1,200+ airways (high and low altitude)</li>
+                    <li>460+ SIDs (Standard Instrument Departures)</li>
+                    <li>270+ STARs (Standard Terminal Arrival Routes)</li>
+                    <li>1,100+ instrument approaches</li>
                 </ul>
                 <p><strong>Data sources:</strong> FAA CIFP, FAA NASR, OurAirports</p>
+                <p>The database updates every 28-day AIRAC cycle — use <strong>Settings → Navigation Data → Check for Updates</strong> in the app. Tip: X-Plane restores departure/arrival procedures from a loaded plan only when the app's data cycle matches the simulator's, so keep both current.</p>
                 <p><strong>Important:</strong> For simulation use only - not for real-world navigation.</p>
             </div>
 
@@ -280,7 +299,7 @@
                     <li>Does not collect any personal information</li>
                     <li>Does not track usage or analytics</li>
                     <li>Processes everything locally on your device</li>
-                    <li>Only connects to your X-Plane on local network</li>
+                    <li>Only connects to your simulator PC on the local network (plus GitHub for optional navigation-data updates)</li>
                     <li>Has no cloud services or external servers</li>
                 </ul>
                 <p>See our <a href="privacy-policy.html">Privacy Policy</a> for complete details.</p>
@@ -297,8 +316,8 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">Q: Can I use PlanToSim without X-Plane?</div>
-                <p><strong>A:</strong> PlanToSim requires X-Plane or a compatible flight simulator to receive the converted flight plans. The app converts the files but needs a destination to send them to.</p>
+                <div class="faq-question">Q: Do I need anything on my PC?</div>
+                <p><strong>A:</strong> Yes — one free receiver, matched to your simulator: the <strong>PlanToSim X-Plane plugin</strong> (X-Plane, Reality-XP GTN/GNS, TDS, FlyThisSim) or the <strong>PlanToSim MSFS Bridge</strong> (MSFS 2020/2024, TDS). Both are free from the <a href="https://github.com/EVPilot/PlanToSim/releases" target="_blank">PlanToSim releases page</a>. The app converts flight plans without a receiver, but needs one as the destination to deliver them to your simulator.</p>
             </div>
 
             <div class="faq-item">
@@ -325,14 +344,15 @@
                 <li>Ensure PDF quality is high (not scanned or low resolution)</li>
             </ul>
 
-            <h3>Issue: Flight plan not appearing in X-Plane</h3>
+            <h3>Issue: "Flight Plan Not Sent" / plan not appearing in the simulator</h3>
             <p><strong>Solution:</strong> Check:</p>
             <ul>
-                <li>X-Plane is running before sending flight plan</li>
+                <li>The receiver is running before sending — X-Plane with the PlanToSim plugin, or the PlanToSim bridge (tray icon) for MSFS</li>
                 <li>IP address in Settings is correct</li>
-                <li>iPhone/iPad and X-Plane computer are on same Wi-Fi network</li>
+                <li>iPhone/iPad and the simulator PC are on same Wi-Fi network</li>
                 <li>Firewall isn't blocking port 5000</li>
                 <li>Local network permission was granted to PlanToSim</li>
+                <li>Then tap <strong>Retry</strong> in the app</li>
             </ul>
 
             <h3>Issue: App crashes or doesn't respond</h3>
@@ -350,7 +370,8 @@
             <p>Need help? Have questions?</p>
             <ul>
                 <li><strong>Email:</strong> <a href="mailto:tailwindapps@icloud.com">tailwindapps@icloud.com</a></li>
-                <li><strong>GitHub Issues:</strong> <a href="https://github.com/echovictor/PlanToSim/issues" target="_blank">Report an issue</a></li>
+                <li><strong>GitHub Issues:</strong> <a href="https://github.com/EVPilot/PlanToSim/issues" target="_blank">Report an issue</a></li>
+                <li><strong>Downloads:</strong> <a href="https://github.com/EVPilot/PlanToSim/releases" target="_blank">X-Plane plugin &amp; MSFS bridge</a></li>
             </ul>
             <p>We typically respond within 24-48 hours.</p>
         </div>
