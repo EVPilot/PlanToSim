@@ -113,7 +113,7 @@ A Windows system tray application that receives flight plans from the PlanToSim 
    - Both devices must be on the same network
 ### Step 2: Install PlanToSim (iOS)
 
-1. **Download from App Store**: [Link coming soon]
+1. **Download from App Store**: [PlanToSim on the App Store](https://apps.apple.com/us/app/plantosim/id6747721405)
 2. **Configure network settings**:
    - Open the app settings
    - Enter your simulator PC's IP address
@@ -354,7 +354,7 @@ Receives plans for **Reality-XP GTN/GNS, TDS GTN Xi, X-Plane FMS, and FlyThisSim
 Published here every AIRAC cycle as `navdata-v{cycle}` releases — the iOS app downloads updates itself via **Settings → Navigation Data → Check for Updates**; no manual download needed.
 
 ### PlanToSim (iOS App)
-[App Store link will be added here]
+Available now: [PlanToSim on the App Store](https://apps.apple.com/us/app/plantosim/id6747721405)
 
 ## Requirements
 
